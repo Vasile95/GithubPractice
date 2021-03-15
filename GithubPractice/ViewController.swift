@@ -17,16 +17,17 @@ class ViewController: UIViewController {
     @IBOutlet weak var birthdayPicker: UIDatePicker!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var clearButton: UIButton!
+    private let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     @IBAction func didClickSave(_ sender: Any) {
-        
+        defaults.set(firstNameField.text, forKey: "firstName")
+        defaults.set(lastNameField.text, forKey: "lastName")
     }
     
     @IBAction func didClickClear(_ sender: Any) {
-        
     }
 }
