@@ -16,7 +16,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var birthdayLabel: UILabel!
     @IBOutlet weak var birthdayPicker: UIDatePicker!
     @IBOutlet weak var saveButton: HighlightButton!
-    @IBOutlet weak var clearButton: UIButton!
+    @IBOutlet weak var clearButton: HighlightButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +26,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         jobPositionField.delegate = self
         
         saveButton.layer.cornerRadius = 8
+        clearButton.layer.cornerRadius = 8
         
     }
     
@@ -37,10 +38,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)

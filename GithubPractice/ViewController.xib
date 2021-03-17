@@ -88,12 +88,23 @@
                                 <action selector="didClickSave:" destination="-1" eventType="touchUpInside" id="MHS-Lf-cgW"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QjM-oe-fCG">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QjM-oe-fCG" customClass="HighlightButton" customModule="GithubPractice" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="248" width="343" height="48"/>
+                            <color key="backgroundColor" red="0.5450980392" green="0.57647058819999997" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="48" id="lk4-kb-eqp"/>
                             </constraints>
-                            <state key="normal" title="Clear"/>
+                            <state key="normal" title="Clear">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="normalBackgroundColor">
+                                    <color key="value" red="0.5450980392" green="0.57647058819999997" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="highlightedBackgroundColor">
+                                    <color key="value" red="0.44705882349999998" green="0.4823529412" blue="0.58823529409999997" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="didClickClear:" destination="-1" eventType="touchUpInside" id="kGL-y3-rrO"/>
                             </connections>
