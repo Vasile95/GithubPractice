@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var clearButton: UIButton!
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        super.viewDidLoad()        
     }
     
     @IBAction func didClickSave(_ sender: Any) {
