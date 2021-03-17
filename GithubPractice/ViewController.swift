@@ -7,8 +7,8 @@
 
 import UIKit
 
-class ViewController: UIViewController,UITextFieldDelegate {
-
+class ViewController: UIViewController, UITextFieldDelegate {
+    
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var firstNameField: UITextField!
     @IBOutlet weak var lastNameField: UITextField!
@@ -25,7 +25,8 @@ class ViewController: UIViewController,UITextFieldDelegate {
         lastNameField.delegate = self
         jobPositionField.delegate = self
         
-        saveButton.layer.cornerRadius = 8 
+        saveButton.layer.cornerRadius = 8
+        
     }
     
     @IBAction func didClickSave(_ sender: Any) {
@@ -38,21 +39,18 @@ class ViewController: UIViewController,UITextFieldDelegate {
     
     
     override func didReceiveMemoryWarning() {
-          super.didReceiveMemoryWarning()
-          // Dispose of any resources that can be recreated.
-      }
-
-  //This is for the keyboard to GO AWAYY !! when user clicks anywhere on the view
+        super.didReceiveMemoryWarning()
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-
-  //This is for the keyboard to GO AWAYY !! when user clicks "Return" key  on the keyboard
-
+    
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-          textField.resignFirstResponder()
-          return true
-      }
+        textField.resignFirstResponder()
+        return true
+    }
     
     
 }
@@ -68,7 +66,7 @@ class HighlightButton: UIButton {
     }
     
     @IBInspectable var highlightedBackgroundColor: UIColor?
-   
+    
     override var isHighlighted: Bool {
         didSet {
             if oldValue == false && isHighlighted {
@@ -78,11 +76,11 @@ class HighlightButton: UIButton {
             }
         }
     }
-
+    
     func highlight() {
         animateBackground(to: highlightedBackgroundColor, duration: highlightDuration)
     }
-
+    
     func unHighlight() {
         animateBackground(to: normalBackgroundColor, duration: highlightDuration)
     }
