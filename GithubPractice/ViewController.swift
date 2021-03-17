@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func didClickSave(_ sender: Any) {
-        
+        print("use breakpoints instead of prints")
     }
     
     @IBAction func didClickClear(_ sender: Any) {
