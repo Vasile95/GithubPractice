@@ -43,7 +43,6 @@ class ViewController: UIViewController {
     @IBAction func didClickSave(_ sender: Any) {
         defaults.set(jobPositionField.text, forKey: jobKey)
         defaults.set(birthdayPicker.date, forKey: birthDayKey)
-        defaults.set(birthdayPicker.date, forKey: birthDayKey)
     }
     
     
