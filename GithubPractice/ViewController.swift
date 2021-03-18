@@ -17,6 +17,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var birthdayPicker: UIDatePicker!
     @IBOutlet weak var saveButton: HighlightButton!
     @IBOutlet weak var clearButton: UIButton!
+    private let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,11 +31,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func didClickSave(_ sender: Any) {
-        
+        defaults.set(firstNameField.text, forKey: "firstName")
+        defaults.set(lastNameField.text, forKey: "lastName")
     }
     
     @IBAction func didClickClear(_ sender: Any) {
-        
     }
     
     
