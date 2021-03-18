@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate {
+class ViewController: UIViewController {
     
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var firstNameField: UITextField!
@@ -17,6 +17,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var birthdayPicker: UIDatePicker!
     @IBOutlet weak var saveButton: HighlightButton!
     @IBOutlet weak var clearButton: HighlightButton!
+    let cornerRadius: CGFloat = 8
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +27,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         lastNameField.delegate = self
         jobPositionField.delegate = self
         
-        saveButton.layer.cornerRadius = 8
-        clearButton.layer.cornerRadius = 8
+        saveButton.layer.cornerRadius = cornerRadius
+        clearButton.layer.cornerRadius = cornerRadius
         
     }
     
@@ -37,20 +39,21 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBAction func didClickClear(_ sender: Any) {
         
     }
-    
+}
+
+// MARK: - UITextFieldDelegate extension
+
+
+extension ViewController: UITextFieldDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
     
-    
 }
-
-
 

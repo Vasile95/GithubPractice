@@ -10,12 +10,9 @@ import UIKit
 class HighlightButton: UIButton {
     var highlightDuration: TimeInterval = 0.25
     
-    @IBInspectable var normalBackgroundColor: UIColor? {
-        didSet {
-            backgroundColor = normalBackgroundColor
-        }
-    }
     
+    @IBInspectable var normalBackgroundColor: UIColor?
+
     @IBInspectable var highlightedBackgroundColor: UIColor?
     
     override var isHighlighted: Bool {
@@ -28,6 +25,7 @@ class HighlightButton: UIButton {
         }
     }
     
+   
     func highlight() {
         animateBackground(to: highlightedBackgroundColor, duration: highlightDuration)
     }

@@ -16,6 +16,7 @@
 		47258D4625FE1EB700B739AF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47258D4425FE1EB700B739AF /* ViewController.swift */; };
 		47258D4725FE1EB700B739AF /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47258D4525FE1EB700B739AF /* ViewController.xib */; };
 		D48FBB8626023AFF0023A6EB /* HighlightButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48FBB8526023AFF0023A6EB /* HighlightButton.swift */; };
+		D4EF74752603555C00BDA717 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4EF74742603555C00BDA717 /* Colors.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		47258D4425FE1EB700B739AF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		47258D4525FE1EB700B739AF /* ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
 		D48FBB8526023AFF0023A6EB /* HighlightButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightButton.swift; sourceTree = "<group>"; };
+		D4EF74742603555C00BDA717 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				47258D0825FE1D1400B739AF /* AppDelegate.swift */,
 				47258D0A25FE1D1400B739AF /* SceneDelegate.swift */,
 				47258D1125FE1D1700B739AF /* Assets.xcassets */,
+				D4EF74742603555C00BDA717 /* Colors.xcassets */,
 				47258D1325FE1D1700B739AF /* LaunchScreen.storyboard */,
 				47258D1625FE1D1700B739AF /* Info.plist */,
 				47258D4425FE1EB700B739AF /* ViewController.swift */,
@@ -235,6 +238,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				47258D1525FE1D1700B739AF /* LaunchScreen.storyboard in Resources */,
+				D4EF74752603555C00BDA717 /* Colors.xcassets in Resources */,
 				47258D4725FE1EB700B739AF /* ViewController.xib in Resources */,
 				47258D1225FE1D1700B739AF /* Assets.xcassets in Resources */,
 			);
