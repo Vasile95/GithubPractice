@@ -20,18 +20,32 @@ class ViewController: UIViewController {
     
     private let defaults = UserDefaults.standard
     
+    let jobKey = "Job"
+    let birthDayKey = "BirthDay"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         firstNameField.delegate = self
         lastNameField.delegate = self
         jobPositionField.delegate = self
+        
+        if let job = defaults.string(forKey: jobKey) {
+            jobPositionField.text = job
+        }
+        
+        if let date = defaults.object(forKey: birthDayKey) as? Date{
+            birthdayPicker.date = date
+        }
+       
     }
     
     @IBAction func didClickSave(_ sender: Any) {
-        defaults.set(firstNameField.text, forKey: "firstName")
-        defaults.set(lastNameField.text, forKey: "lastName")
+        defaults.set(jobPositionField.text, forKey: jobKey)
+        defaults.set(birthdayPicker.date, forKey: birthDayKey)
     }
+    
+    
     
     @IBAction func didClickClear(_ sender: Any) {
     }
