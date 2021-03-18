@@ -27,6 +27,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         saveButton.layer.cornerRadius = 8
         
+        //maybe this will work
+        profileImage.layer.cornerRadius = profileImage.frame.height/2
+        profileImage.clipsToBounds = true
     }
     
     @IBAction func didClickSave(_ sender: Any) {
@@ -37,10 +40,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
