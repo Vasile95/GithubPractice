@@ -17,8 +17,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var birthdayPicker: UIDatePicker!
     @IBOutlet weak var saveButton: HighlightButton!
     @IBOutlet weak var clearButton: HighlightButton!
-    let cornerRadius: CGFloat = 8
-   
+    
+    private let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,23 +26,18 @@ class ViewController: UIViewController {
         firstNameField.delegate = self
         lastNameField.delegate = self
         jobPositionField.delegate = self
-        
-        saveButton.layer.cornerRadius = cornerRadius
-        clearButton.layer.cornerRadius = cornerRadius
-        
     }
     
     @IBAction func didClickSave(_ sender: Any) {
-        
+        defaults.set(firstNameField.text, forKey: "firstName")
+        defaults.set(lastNameField.text, forKey: "lastName")
     }
     
     @IBAction func didClickClear(_ sender: Any) {
-        
     }
 }
 
 // MARK: - UITextFieldDelegate extension
-
 
 extension ViewController: UITextFieldDelegate {
     
