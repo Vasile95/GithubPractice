@@ -18,6 +18,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var saveButton: HighlightButton!
     @IBOutlet weak var clearButton: UIButton!
     
+    let defaults = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,10 +29,19 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         saveButton.layer.cornerRadius = 8
         
+        if let job = defaults.string(forKey: "Job") {
+            jobPositionField.text = job
+        }
+        
+        if let date = defaults.object(forKey: "BirthDay"){
+            birthdayPicker.date = date as! Date
+        }
+       
     }
     
     @IBAction func didClickSave(_ sender: Any) {
-        
+        defaults.set(jobPositionField.text, forKey: "Job")
+        defaults.set(birthdayPicker.date, forKey: "BirthDay")
     }
     
     @IBAction func didClickClear(_ sender: Any) {
