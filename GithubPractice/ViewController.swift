@@ -34,8 +34,8 @@ class ViewController: UIViewController {
             jobPositionField.text = job
         }
         
-        if let date = defaults.object(forKey: birthDayKey){
-            birthdayPicker.date = date as! Date
+        if let date = defaults.object(forKey: birthDayKey) as? Date{
+            birthdayPicker.date = date
         }
        
     }
