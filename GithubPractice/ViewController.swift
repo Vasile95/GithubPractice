@@ -48,6 +48,8 @@ class ViewController: UIViewController {
     
     
     @IBAction func didClickClear(_ sender: Any) {
+        defaults.removeObject(forKey: jobKey)
+        defaults.removeObject(forKey: birthDayKey)
     }
 }
 
