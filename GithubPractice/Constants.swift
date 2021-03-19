@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 struct Constants {
     static let firstNameKey = "firstName"
     static let lastNameKey = "lastName"

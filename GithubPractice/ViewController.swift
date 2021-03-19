@@ -20,11 +20,6 @@ class ViewController: UIViewController {
     
     private let defaults = UserDefaults.standard
     
-    let firstNameKey = Constants.firstNameKey
-    let lastNameKey = Constants.lastNameKey
-    let jobKey = Constants.jobKey
-    let birthDayKey = Constants.birthDayKey
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,35 +29,35 @@ class ViewController: UIViewController {
         
         profileImage.layer.cornerRadius = profileImage.frame.height/2
         
-        if let fisrtName = defaults.string(forKey: firstNameKey) {
+        if let fisrtName = defaults.string(forKey: Constants.firstNameKey) {
             firstNameField.text = fisrtName
         }
         
-        if let lastName = defaults.string(forKey: lastNameKey){
+        if let lastName = defaults.string(forKey: Constants.lastNameKey){
             lastNameField.text = lastName
         }
         
-        if let job = defaults.string(forKey: jobKey) {
+        if let job = defaults.string(forKey: Constants.jobKey) {
             jobPositionField.text = job
         }
-
-        if let date = defaults.object(forKey: birthDayKey) as? Date{
+        
+        if let date = defaults.object(forKey: Constants.birthDayKey) as? Date{
             birthdayPicker.date = date
         }
     }
     
     @IBAction func didClickSave(_ sender: Any) {
-        defaults.set(firstNameField.text, forKey: firstNameKey)
-        defaults.set(lastNameField.text, forKey: lastNameKey)
-        defaults.set(jobPositionField.text, forKey: jobKey)
-        defaults.set(birthdayPicker.date, forKey: birthDayKey)
+        defaults.set(firstNameField.text, forKey: Constants.firstNameKey)
+        defaults.set(lastNameField.text, forKey: Constants.lastNameKey)
+        defaults.set(jobPositionField.text, forKey: Constants.jobKey)
+        defaults.set(birthdayPicker.date, forKey: Constants.birthDayKey)
     }
     
     @IBAction func didClickClear(_ sender: Any) {
         let dictionary = defaults.dictionaryRepresentation()
-            dictionary.keys.forEach { key in
-                defaults.removeObject(forKey: key)
-            }
+        dictionary.keys.forEach { key in
+            defaults.removeObject(forKey: key)
+        }
     }
 }
 
