@@ -15,6 +15,7 @@
 		47258D2B25FE1D1700B739AF /* GithubPracticeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47258D2A25FE1D1700B739AF /* GithubPracticeUITests.swift */; };
 		47258D4625FE1EB700B739AF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47258D4425FE1EB700B739AF /* ViewController.swift */; };
 		47258D4725FE1EB700B739AF /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47258D4525FE1EB700B739AF /* ViewController.xib */; };
+		D46DA80E2604D40600FA15CC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46DA80D2604D40600FA15CC /* Constants.swift */; };
 		D48FBB8626023AFF0023A6EB /* HighlightButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48FBB8526023AFF0023A6EB /* HighlightButton.swift */; };
 		D4EF74752603555C00BDA717 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4EF74742603555C00BDA717 /* Colors.xcassets */; };
 /* End PBXBuildFile section */
@@ -51,6 +52,7 @@
 		47258D2C25FE1D1700B739AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		47258D4425FE1EB700B739AF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		47258D4525FE1EB700B739AF /* ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
+		D46DA80D2604D40600FA15CC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D48FBB8526023AFF0023A6EB /* HighlightButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightButton.swift; sourceTree = "<group>"; };
 		D4EF74742603555C00BDA717 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -112,6 +114,7 @@
 				47258D4425FE1EB700B739AF /* ViewController.swift */,
 				47258D4525FE1EB700B739AF /* ViewController.xib */,
 				D48FBB8526023AFF0023A6EB /* HighlightButton.swift */,
+				D46DA80D2604D40600FA15CC /* Constants.swift */,
 			);
 			path = GithubPractice;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D46DA80E2604D40600FA15CC /* Constants.swift in Sources */,
 				D48FBB8626023AFF0023A6EB /* HighlightButton.swift in Sources */,
 				47258D4625FE1EB700B739AF /* ViewController.swift in Sources */,
 				47258D0925FE1D1400B739AF /* AppDelegate.swift in Sources */,

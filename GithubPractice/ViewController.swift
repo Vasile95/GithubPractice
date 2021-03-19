@@ -20,9 +20,6 @@ class ViewController: UIViewController {
     
     private let defaults = UserDefaults.standard
     
-    let jobKey = "Job"
-    let birthDayKey = "BirthDay"
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,25 +27,37 @@ class ViewController: UIViewController {
         lastNameField.delegate = self
         jobPositionField.delegate = self
         
-        if let job = defaults.string(forKey: jobKey) {
+        profileImage.layer.cornerRadius = profileImage.frame.height/2
+        
+        if let fisrtName = defaults.string(forKey: Constants.firstNameKey) {
+            firstNameField.text = fisrtName
+        }
+        
+        if let lastName = defaults.string(forKey: Constants.lastNameKey){
+            lastNameField.text = lastName
+        }
+        
+        if let job = defaults.string(forKey: Constants.jobKey) {
             jobPositionField.text = job
         }
         
-        profileImage.layer.cornerRadius = profileImage.frame.height/2
-
-        if let date = defaults.object(forKey: birthDayKey) as? Date{
+        if let date = defaults.object(forKey: Constants.birthDayKey) as? Date{
             birthdayPicker.date = date
         }
     }
     
     @IBAction func didClickSave(_ sender: Any) {
-        defaults.set(jobPositionField.text, forKey: jobKey)
-        defaults.set(birthdayPicker.date, forKey: birthDayKey)
+        defaults.set(firstNameField.text, forKey: Constants.firstNameKey)
+        defaults.set(lastNameField.text, forKey: Constants.lastNameKey)
+        defaults.set(jobPositionField.text, forKey: Constants.jobKey)
+        defaults.set(birthdayPicker.date, forKey: Constants.birthDayKey)
     }
     
     @IBAction func didClickClear(_ sender: Any) {
-        defaults.removeObject(forKey: jobKey)
-        defaults.removeObject(forKey: birthDayKey)
+        let dictionary = defaults.dictionaryRepresentation()
+        dictionary.keys.forEach { key in
+            defaults.removeObject(forKey: key)
+        }
     }
 }
 
