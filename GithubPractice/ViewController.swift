@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate {
+class ViewController: UIViewController {
     
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var firstNameField: UITextField!
@@ -16,7 +16,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var birthdayLabel: UILabel!
     @IBOutlet weak var birthdayPicker: UIDatePicker!
     @IBOutlet weak var saveButton: HighlightButton!
-    @IBOutlet weak var clearButton: UIButton!
+    @IBOutlet weak var clearButton: HighlightButton!
+    
+    private let defaults = UserDefaults.standard
+    
+    let jobKey = "Job"
+    let birthDayKey = "BirthDay"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,34 +30,40 @@ class ViewController: UIViewController, UITextFieldDelegate {
         lastNameField.delegate = self
         jobPositionField.delegate = self
         
-        saveButton.layer.cornerRadius = 8
+        if let job = defaults.string(forKey: jobKey) {
+            jobPositionField.text = job
+        }
         
         //maybe this will work
         profileImage.layer.cornerRadius = profileImage.frame.height/2
         profileImage.clipsToBounds = true
+
+        if let date = defaults.object(forKey: birthDayKey) as? Date{
+            birthdayPicker.date = date
+        }
     }
     
     @IBAction func didClickSave(_ sender: Any) {
-        
+        defaults.set(jobPositionField.text, forKey: jobKey)
+        defaults.set(birthdayPicker.date, forKey: birthDayKey)
     }
     
     @IBAction func didClickClear(_ sender: Any) {
-        
     }
-    
+}
+
+// MARK: - UITextFieldDelegate extension
+
+extension ViewController: UITextFieldDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
     
-    
 }
-
-
 
