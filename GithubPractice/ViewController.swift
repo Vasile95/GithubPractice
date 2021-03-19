@@ -34,9 +34,7 @@ class ViewController: UIViewController {
             jobPositionField.text = job
         }
         
-        //maybe this will work
         profileImage.layer.cornerRadius = profileImage.frame.height/2
-        profileImage.clipsToBounds = true
 
         if let date = defaults.object(forKey: birthDayKey) as? Date{
             birthdayPicker.date = date
