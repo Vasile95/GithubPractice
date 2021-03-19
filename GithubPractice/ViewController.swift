@@ -20,8 +20,10 @@ class ViewController: UIViewController {
     
     private let defaults = UserDefaults.standard
     
-    let jobKey = "Job"
-    let birthDayKey = "BirthDay"
+    let firstNameKey = Constants.firstNameKey
+    let lastNameKey = Constants.lastNameKey
+    let jobKey = Constants.jobKey
+    let birthDayKey = Constants.birthDayKey
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,11 +32,19 @@ class ViewController: UIViewController {
         lastNameField.delegate = self
         jobPositionField.delegate = self
         
+        profileImage.layer.cornerRadius = profileImage.frame.height/2
+        
+        if let fisrtName = defaults.string(forKey: firstNameKey) {
+            firstNameField.text = fisrtName
+        }
+        
+        if let lastName = defaults.string(forKey: lastNameKey){
+            lastNameField.text = lastName
+        }
+        
         if let job = defaults.string(forKey: jobKey) {
             jobPositionField.text = job
         }
-        
-        profileImage.layer.cornerRadius = profileImage.frame.height/2
 
         if let date = defaults.object(forKey: birthDayKey) as? Date{
             birthdayPicker.date = date
@@ -42,13 +52,17 @@ class ViewController: UIViewController {
     }
     
     @IBAction func didClickSave(_ sender: Any) {
+        defaults.set(firstNameField.text, forKey: firstNameKey)
+        defaults.set(lastNameField.text, forKey: lastNameKey)
         defaults.set(jobPositionField.text, forKey: jobKey)
         defaults.set(birthdayPicker.date, forKey: birthDayKey)
     }
     
     @IBAction func didClickClear(_ sender: Any) {
-        defaults.removeObject(forKey: jobKey)
-        defaults.removeObject(forKey: birthDayKey)
+        let dictionary = defaults.dictionaryRepresentation()
+            dictionary.keys.forEach { key in
+                defaults.removeObject(forKey: key)
+            }
     }
 }
 
