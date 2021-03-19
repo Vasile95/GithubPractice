@@ -34,18 +34,17 @@ class ViewController: UIViewController {
             jobPositionField.text = job
         }
         
+        profileImage.layer.cornerRadius = profileImage.frame.height/2
+
         if let date = defaults.object(forKey: birthDayKey) as? Date{
             birthdayPicker.date = date
         }
-       
     }
     
     @IBAction func didClickSave(_ sender: Any) {
         defaults.set(jobPositionField.text, forKey: jobKey)
         defaults.set(birthdayPicker.date, forKey: birthDayKey)
     }
-    
-    
     
     @IBAction func didClickClear(_ sender: Any) {
         defaults.removeObject(forKey: jobKey)
