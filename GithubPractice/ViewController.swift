@@ -7,6 +7,11 @@
 
 import UIKit
 
+enum UserResult {
+    case succes
+    case failure
+}
+
 class ViewController: UIViewController {
     
     @IBOutlet weak var profileImage: UIImageView!
@@ -17,6 +22,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var birthdayPicker: UIDatePicker!
     @IBOutlet weak var saveButton: HighlightButton!
     @IBOutlet weak var clearButton: HighlightButton!
+    
+    var saveResult: UserResult = .failure
     
     private let defaults = UserDefaults.standard
     
@@ -33,7 +40,7 @@ class ViewController: UIViewController {
             firstNameField.text = fisrtName
         }
         
-        if let lastName = defaults.string(forKey: Constants.lastNameKey){
+        if let lastName = defaults.string(forKey: Constants.lastNameKey) {
             lastNameField.text = lastName
         }
         
@@ -47,10 +54,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func didClickSave(_ sender: Any) {
-        defaults.set(firstNameField.text, forKey: Constants.firstNameKey)
-        defaults.set(lastNameField.text, forKey: Constants.lastNameKey)
-        defaults.set(jobPositionField.text, forKey: Constants.jobKey)
-        defaults.set(birthdayPicker.date, forKey: Constants.birthDayKey)
+        saveData()
     }
     
     @IBAction func didClickClear(_ sender: Any) {
@@ -58,6 +62,30 @@ class ViewController: UIViewController {
         dictionary.keys.forEach { key in
             defaults.removeObject(forKey: key)
         }
+    }
+    
+    func saveData() {
+        saveName()
+        defaults.set(lastNameField.text, forKey: Constants.lastNameKey)
+        defaults.set(jobPositionField.text, forKey: Constants.jobKey)
+        defaults.set(birthdayPicker.date, forKey: Constants.birthDayKey)
+    }
+    
+    func saveName() {
+        validation()
+        switch saveResult {
+        case .succes:
+            saveButton.backgroundColor = .green
+            defaults.set(firstNameField.text, forKey: Constants.firstNameKey)
+        case .failure:
+            saveButton.backgroundColor = .red
+        }
+    }
+    
+    func validation(){
+        let str = firstNameField.text!
+        let components = str.components(separatedBy: .whitespacesAndNewlines)
+        saveResult = components.count == 1 ? .succes : .failure
     }
 }
 
