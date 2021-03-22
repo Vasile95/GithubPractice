@@ -7,6 +7,11 @@
 
 import UIKit
 
+enum UserResult {
+    case succes;
+    case failure;
+}
+
 class ViewController: UIViewController {
     
     @IBOutlet weak var profileImage: UIImageView!
@@ -17,6 +22,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var birthdayPicker: UIDatePicker!
     @IBOutlet weak var saveButton: HighlightButton!
     @IBOutlet weak var clearButton: HighlightButton!
+    
+    var saveResult: UserResult = .failure
     
     private let defaults = UserDefaults.standard
     
@@ -47,11 +54,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func didClickSave(_ sender: Any) {
-        saveName(firstNameField.text, Constants.firstNameKey)
-        
-        defaults.set(lastNameField.text, forKey: Constants.lastNameKey)
-        defaults.set(jobPositionField.text, forKey: Constants.jobKey)
-        defaults.set(birthdayPicker.date, forKey: Constants.birthDayKey)
+        saveData()
     }
     
     @IBAction func didClickClear(_ sender: Any) {
@@ -61,20 +64,24 @@ class ViewController: UIViewController {
         }
     }
     
-    func saveName(_ name: String?, _ key: String){
-        if let firstName = name {
-            changeBtnBackground(valid: validation(str: firstName))
-            if validation(str: firstName) {
-                defaults.set(firstName, forKey: key)
-            }
-        }
+    func saveData(){
+        saveName()
+        defaults.set(lastNameField.text, forKey: Constants.lastNameKey)
+        defaults.set(jobPositionField.text, forKey: Constants.jobKey)
+        defaults.set(birthdayPicker.date, forKey: Constants.birthDayKey)
     }
     
-    func changeBtnBackground( valid: Bool){
-        if valid {
-            saveButton.backgroundColor = UIColor(named: "Light Green")
-        } else {
-            saveButton.backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
+    func saveName(){
+        if let firstName = firstNameField.text {
+            if validation(str: firstName) {
+                saveResult = .succes
+            } else {
+                saveResult = .failure
+            }
+            saveButton.backgroundColor = saveResult == .succes ? .green : .red
+            if saveResult == .succes {
+                defaults.set(firstNameField.text, forKey: Constants.firstNameKey)
+            }
         }
     }
     
@@ -86,35 +93,6 @@ class ViewController: UIViewController {
             return false
         }
     }
-    
-    
-//    // IMPLEMENTATION
-//    enum LookupError: ErrorType {
-//      case InvalidName
-//      case NullData
-//    }
-//
-//    enum UserResult {
-//      case Success(String)
-//      case Error(LookupError)
-//    }
-//
-//    func findUserStatus(name: String) -> UserResult {
-//      guard let userStats = users[name] else {
-//        return .Error(InvalidName)
-//      }
-//      return .Success(userStats)
-//    }
-//
-//    // USAGE
-//    switch findUserStatus("Stevie Wonder") {
-//      case let .Success(stats):
-//        print("Stevie Wonder's Stats: \(stats)")
-//      case let .Error(error):
-//        print("Error: \(error));
-//    }
-    
-    
 }
 
 // MARK: - UITextFieldDelegate extension
