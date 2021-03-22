@@ -8,8 +8,8 @@
 import UIKit
 
 enum UserResult {
-    case succes;
-    case failure;
+    case succes
+    case failure
 }
 
 class ViewController: UIViewController {
@@ -40,7 +40,7 @@ class ViewController: UIViewController {
             firstNameField.text = fisrtName
         }
         
-        if let lastName = defaults.string(forKey: Constants.lastNameKey){
+        if let lastName = defaults.string(forKey: Constants.lastNameKey) {
             lastNameField.text = lastName
         }
         
@@ -64,38 +64,28 @@ class ViewController: UIViewController {
         }
     }
     
-    func saveData(){
+    func saveData() {
         saveName()
         defaults.set(lastNameField.text, forKey: Constants.lastNameKey)
         defaults.set(jobPositionField.text, forKey: Constants.jobKey)
         defaults.set(birthdayPicker.date, forKey: Constants.birthDayKey)
     }
     
-    func saveName(){
-        if let firstName = firstNameField.text {
-            if validation(str: firstName) {
-                saveResult = .succes
-            } else {
-                saveResult = .failure
-            }
-            
-            switch saveResult {
-            case .succes:
-                saveButton.backgroundColor = .green
-                defaults.set(firstNameField.text, forKey: Constants.firstNameKey)
-            case .failure:
-                saveButton.backgroundColor = .red
-            }
+    func saveName() {
+        validation()
+        switch saveResult {
+        case .succes:
+            saveButton.backgroundColor = .green
+            defaults.set(firstNameField.text, forKey: Constants.firstNameKey)
+        case .failure:
+            saveButton.backgroundColor = .red
         }
     }
     
-    func validation(str: String) -> Bool{
+    func validation(){
+        let str = firstNameField.text!
         let components = str.components(separatedBy: .whitespacesAndNewlines)
-        if components.count == 1 {
-            return true
-        } else {
-            return false
-        }
+        saveResult = components.count == 1 ? .succes : .failure
     }
 }
 
