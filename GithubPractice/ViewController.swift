@@ -47,7 +47,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func didClickSave(_ sender: Any) {
-        defaults.set(firstNameField.text, forKey: Constants.firstNameKey)
+        saveName(firstNameField.text, Constants.firstNameKey)
+        
         defaults.set(lastNameField.text, forKey: Constants.lastNameKey)
         defaults.set(jobPositionField.text, forKey: Constants.jobKey)
         defaults.set(birthdayPicker.date, forKey: Constants.birthDayKey)
@@ -59,6 +60,61 @@ class ViewController: UIViewController {
             defaults.removeObject(forKey: key)
         }
     }
+    
+    func saveName(_ name: String?, _ key: String){
+        if let firstName = name {
+            changeBtnBackground(valid: validation(str: firstName))
+            if validation(str: firstName) {
+                defaults.set(firstName, forKey: key)
+            }
+        }
+    }
+    
+    func changeBtnBackground( valid: Bool){
+        if valid {
+            saveButton.backgroundColor = UIColor(named: "Light Green")
+        } else {
+            saveButton.backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
+        }
+    }
+    
+    func validation(str: String) -> Bool{
+        let components = str.components(separatedBy: .whitespacesAndNewlines)
+        if components.count == 1 {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    
+//    // IMPLEMENTATION
+//    enum LookupError: ErrorType {
+//      case InvalidName
+//      case NullData
+//    }
+//
+//    enum UserResult {
+//      case Success(String)
+//      case Error(LookupError)
+//    }
+//
+//    func findUserStatus(name: String) -> UserResult {
+//      guard let userStats = users[name] else {
+//        return .Error(InvalidName)
+//      }
+//      return .Success(userStats)
+//    }
+//
+//    // USAGE
+//    switch findUserStatus("Stevie Wonder") {
+//      case let .Success(stats):
+//        print("Stevie Wonder's Stats: \(stats)")
+//      case let .Error(error):
+//        print("Error: \(error));
+//    }
+    
+    
 }
 
 // MARK: - UITextFieldDelegate extension
