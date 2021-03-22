@@ -78,9 +78,13 @@ class ViewController: UIViewController {
             } else {
                 saveResult = .failure
             }
-            saveButton.backgroundColor = saveResult == .succes ? .green : .red
-            if saveResult == .succes {
+            
+            switch saveResult {
+            case .succes:
+                saveButton.backgroundColor = .green
                 defaults.set(firstNameField.text, forKey: Constants.firstNameKey)
+            case .failure:
+                saveButton.backgroundColor = .red
             }
         }
     }
